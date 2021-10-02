@@ -8,7 +8,6 @@ on:
 
 jobs:
   generate-build-matrix:
-    if: ${{ github.repository_owner == 'pytorch' }}
     runs-on: ubuntu-18.04
     outputs:
       matrix: ${{ steps.set-matrix.outputs.matrix }}
@@ -25,7 +24,6 @@ jobs:
           echo "${MATRIX}"
           echo "::set-output name=matrix::${MATRIX}"
   build-wheel:
-    if: ${{ github.repository_owner == 'pytorch' }}
     needs: generate-build-matrix
     runs-on: linux.2xlarge
     strategy:
